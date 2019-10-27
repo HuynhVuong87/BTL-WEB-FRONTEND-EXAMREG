@@ -27,7 +27,7 @@ export class DsSinhvienComponent implements OnInit {
       name: 'Email'
     },
     {
-      prop: 'username',
+      prop: 'signed_id.username',
       name: 'Tên Đăng Nhập'
     },
     {
@@ -41,6 +41,7 @@ export class DsSinhvienComponent implements OnInit {
     const url = 'http://localhost:8000/profile/get_all';
     this.request.GETmethod({ url, headers: { withCredentials: true } }).subscribe(res => {
       res.map(x => {
+        x.gender = x.gender ? this.helper.gender.find(y => x.id === x.gender).name : 'Chưa đặt';
         x.ho = x.fullName.split(' ').slice(0, -1).join(' ');
         x.ten = x.fullName.split(' ').slice(-1).join(' ');
       });

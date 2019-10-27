@@ -1,0 +1,23 @@
+<div class="container-component">
+  <mat-grid-list cols="4" rowHeight="30vh">
+    <mat-grid-tile colspan="1" rowspan="3">
+
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" rowspan="1">
+      <mat-list *ngIf="profile">
+        <mat-list-item>
+          <b> Họ và Tên: &nbsp;</b> {{profile.fullName}}
+        </mat-list-item>
+        <mat-list-item>
+          <b>Mã số sinh viên:&nbsp;</b> {{profile.mssv}}
+        </mat-list-item>
+        <mat-list-item>
+          <b> Lớp:&nbsp;</b> {{profile.grade}}
+        </mat-list-item>
+      </mat-list>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" rowspan="2">
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

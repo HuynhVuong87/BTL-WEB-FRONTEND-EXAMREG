@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-button mat-raised (click)="inputSideNav.toggle()" color="primary">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span style="margin-left: 25px;">ExamReg</span>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true" *ngIf="user.signed">
+      <span class=noties> <button mat-button color="secondary">
+            <mat-icon>notifications_none</mat-icon>
+        </button>
+      </span>
+
+      <span class="user">
+        <a mat-button class=name (click)='openProfile(user.role, user._id)'> <img width="30" src="assets/images/user.png" alt="">{{user.username}}</a>
+        <span class="my_badge" [ngStyle]='{"background": user.role==1? "#0bea00": user.role==2? "#f44336":""}'>{{user.roleName}}</span>
+        <button mat-button mat-raised color="warn" (click)="logOut()" title="ĐĂNG XUẤT TÀI KHOẢN">
+          <mat-icon>input</mat-icon>
+        </button>
+      </span>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

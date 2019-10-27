@@ -1,0 +1,52 @@
+.container {
+  padding: 26px;
+}
+
+.top-logo button {
+  display: block;
+  margin: 26px auto;
+  background-color: var(--blue-text-color);
+  color: var(--primary-color)
+}
+
+mat-sidenav-container {
+  background-color: var(--background-color);
+}
+
+mat-sidenav {
+  width: 13%;
+  -webkit-box-shadow: 7px 0px 35px -23px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 0px 35px -23px rgba(0,0,0,0.75);
+  box-shadow: 7px 0px 35px -23px rgba(190, 190, 190, 0.75);
+}
+
+mat-sidenav a{
+  font-family: 'Dosis', sans-serif;
+  font-weight: bold;
+  color: var(--text-color)
+}
+
+.top-logo {
+  display: block;
+  height: 8%;
+}
+
+span.link-content {
+  margin-left: 20px !important;
+}
+
+.mat-nav-list .mat-list-item:hover,
+.mat-nav-list .mat-list-item:focus,
+.mat-nav-list .mat-list-item.is-active {
+  color: var(--blue-text-color);
+  border-left: var(--blue-text-color) solid 3px;
+  transition:all 0.5s ease;
+  background: rgba(63, 81, 181, 0.05);
+}
+.mat-nav-list .mat-list-item{
+  transition:all 0.5s ease;
+  margin-bottom:10px
+}
+.mat-drawer-inner-container{
+  overflow-x: hidden !important;
+}

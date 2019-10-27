@@ -1,0 +1,21 @@
+.login-form {
+  width: 30%;
+  margin: 150px auto;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-raised-button {
+  float: right !important
+}
+
+button {
+  background: var(--blue-color) !important;
+}
+
+.container-component {
+  background: url('../../../../assets/images/login.jpg');
+  background-size: cover;
+}

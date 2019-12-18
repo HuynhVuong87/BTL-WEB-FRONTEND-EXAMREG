@@ -1,1 +1,48 @@
-<p>ds-kithi works!</p>
+<div class="add">
+  <button mat-fab class='gradient' (click)="createTerm()" title="THÊM KÌ THI MỚI">
+    <i class="material-icons">add</i></button>
+</div>
+
+<mat-toolbar>
+  <mat-toolbar-row>
+    <mat-icon>search</mat-icon>
+    <input type="text" class="input-basic-kithi" [style.width]="'30%'" placeholder="Tìm kiếm kì thi..." autofocus [(ngModel)]="textSearch" (ngModelChange)="searchTerm()" />
+    <span class="example-spacer"></span>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<div fxLayout="row wrap">
+  <mat-card fxFlex="21.85" *ngFor="let obj of terms" class="example-card">
+    <div class="overlay-disable" *ngIf="!obj.active" matTooltip="Kì thi này đã bị hủy bỏ."
+    matTooltipPosition="below">
+      <!-- <button mat-icon-button style="color: #fee400;">
+        <mat-icon>
+          warning
+        </mat-icon>
+      </button> -->
+    </div>
+    <button  *ngIf="obj.active" mat-icon-button class="cancel-button" (click)="disableTerm(obj.id)">
+      <mat-icon>cancel</mat-icon>
+    </button>
+    <mat-card-header>
+      <mat-card-title><a [routerLink]="'/ds-kithi/'+ obj.id">{{obj.name}}</a>  <span *ngIf="obj.courses" style="font-size: 16px;">&nbsp; ({{obj.courses.length}} HỌC PHẦN)</span> </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="row" fxLayoutAlign="center">
+
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center">
+      <span class="date" style="background: #0082e92e" matTooltip="Thời gian bắt đầu mở đăng kí thi"
+        matTooltipPosition="below">
+        {{obj.from * 1000 | date:'dd/MM/yyyy'}}
+      </span> &nbsp; <span style="padding: 4px;">ĐẾN </span> &nbsp;
+      <span class="date" style="background: #ff11002b" matTooltip="Thời gian kết thúc kì thi"
+        matTooltipPosition="below">
+        {{obj.to * 1000 | date:'dd/MM/yyyy'}}
+      </span>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.66)" size="medium" color="#4964ff" type="ball-scale-multiple"
+  [fullScreen]="true">
+</ngx-spinner>

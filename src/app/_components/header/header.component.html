@@ -1,23 +1,27 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <button mat-button mat-raised (click)="inputSideNav.toggle()" color="primary">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span style="margin-left: 25px;">ExamReg</span>
-    <span class="example-spacer"></span>
-    <div fxShow="true" fxHide.lt-md="true" *ngIf="user.signed">
-      <span class=noties> <button mat-button color="secondary">
-            <mat-icon>notifications_none</mat-icon>
-        </button>
-      </span>
+<div  *ngIf="authService.user$ | async as user">
+  <mat-toolbar *ngIf="user.value !== null">
+    <mat-toolbar-row >
+      <button *ngIf="user.value.role === 1" mat-button (click)="inputSideNav.toggle()" color="primary">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span style="margin-left: 25px;color: #613fb5c7"><a [routerLink]="'/'">{{title}}</a></span>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true" >
 
-      <span class="user">
-        <a mat-button class=name (click)='openProfile(user.role, user._id)'> <img width="30" src="assets/images/user.png" alt="">{{user.username}}</a>
-        <span class="my_badge" [ngStyle]='{"background": user.role==1? "#0bea00": user.role==2? "#f44336":""}'>{{user.roleName}}</span>
-        <button mat-button mat-raised color="warn" (click)="logOut()" title="ĐĂNG XUẤT TÀI KHOẢN">
-          <mat-icon>input</mat-icon>
-        </button>
-      </span>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+        <span class=noties> <button mat-icon-button color="secondary">
+              <mat-icon>notifications_none</mat-icon>
+          </button>
+        </span>
+
+        <span class="user">
+          <a mat-button [routerLink]="'user/'+ user.value.uid" class=name> <img width="30" src="assets/images/user.png" alt="">{{user.value.displayName}}</a>
+          <span class="my_badge" [ngStyle]='{"background": user.value.role==2? "#0bea00": user.value.role==1? "#f44336":""}'>{{user.value.roleName}}</span>
+          <button mat-button color="warn" (click)="logOut()" title="ĐĂNG XUẤT TÀI KHOẢN">
+            <mat-icon>input</mat-icon>
+          </button>
+        </span>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+

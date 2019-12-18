@@ -1,0 +1,73 @@
+mat-toolbar {
+  background: #0000;
+  box-shadow: unset;
+}
+
+mat-card {
+  margin: 20px;
+}
+
+input.input-basic-kithi {
+  font-size: 16px;
+  padding: 11px;
+  font-family: 'Quicksand', sans-serif;
+  border: unset;
+  background: #0000;
+}
+
+mat-card-title.mat-card-title {
+  font-family: 'Dosis', sans-serif;
+  text-transform: uppercase;
+  color: #3F51B5;
+}
+
+.mat-card:not([class*="mat-elevation-z"]) {
+  box-shadow: 0 3px 1px -1px rgba(33, 149, 243, 0.671), 0 1px 1px 0 #9b9b9b00, 0 1px 3px 0 rgb(241, 241, 241);
+  transition: all 0.3s ease;
+  border: #2195f300 solid;
+}
+
+mat-card:hover {
+  -webkit-transform: translateX(-3px);
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
+  border: #2196f373 dashed !important;
+  border-bottom: unset !important;
+
+  .cancel-button {
+    visibility: visible;
+    transition: all 0.3s ease;
+  }
+}
+
+span.date {
+  /* background: #000; */
+  padding: 4px 7px;
+  border-radius: 4px;
+  /* margin: 0px; */
+}
+
+mat-card.example-card.mat-card.ng-star-inserted {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.cancel-button {
+  visibility: hidden;
+  position: absolute;
+  top: -22px;
+  right: -21px;
+  color: #cc0e00;
+}
+
+.overlay-disable {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  top: -1px;
+  left: -2px;
+  right: -2px;
+  bottom: -3px;
+  background-color: rgba(0, 0, 0, 0.22)
+}

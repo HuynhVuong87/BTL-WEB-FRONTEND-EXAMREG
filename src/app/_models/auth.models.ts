@@ -8,13 +8,15 @@ export class UserSignUp {
 
 export class UserProfile {
   // tslint:disable-next-line: variable-name
-  _id?: string;
+  uid: string;
   username?: string;
   email?: string;
   lastSign?: number;
-  signed: boolean;
+  signed?: boolean;
   ctime?: number;
-  role?: string;
+  displayName: string;
+  role?: number;
+  roleName?: string;
 }
 
 

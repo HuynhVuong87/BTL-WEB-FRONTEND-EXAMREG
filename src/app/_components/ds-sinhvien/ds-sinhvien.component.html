@@ -1,11 +1,14 @@
+<div class="add">
+  <button mat-fab class='gradient' (click)="importFromExcels()" title="THÊM HỌC PHẦN"><i
+      class="material-icons">add</i></button>
+</div>
 <div class="container-component">
-  <mat-toolbar>
+  <!-- <mat-toolbar>
     <mat-toolbar-row>
 
       <span class="example-spacer"></span>
-      <button mat-raised-button class='gradient'>THÊM HÀNG LOẠT</button>
     </mat-toolbar-row>
-  </mat-toolbar>
+  </mat-toolbar> -->
   <ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
     [scrollbarV]="true" [scrollbarH]="true" [footerHeight]="50" [rowHeight]="50"
     [sorts]="[{ prop: 'ten', dir: 'asc' }]">
@@ -22,4 +25,11 @@
         <ngx-datatable-column name="Gender">
         </ngx-datatable-column> -->
   </ngx-datatable>
+  <ng-template #roleTemplate let-row="row" let-value="value" let-i="index">
+    <strong> {{ value }} </strong>
+  </ng-template>
 </div>
+<ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.66)" size="medium" color="#4964ff" type="ball-scale-multiple"
+  [fullScreen]="true">
+  <p style="color: white"> LOADING...</p>
+</ngx-spinner>

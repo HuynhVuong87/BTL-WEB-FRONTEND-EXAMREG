@@ -1,26 +1,31 @@
-<mat-sidenav-container>
-  <mat-sidenav #sideNav mode="side" opened fixedInViewport>
-    <div class="top-logo">
-      <button mat-raised-button class=gradient><mat-icon>create_new_folder</mat-icon> TẠO CA THI</button>
-    </div>
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="'/'">
-        <span class="link-content">TRANG CHỦ</span>
-      </a>
-      <a mat-list-item [routerLink]="'/ds-sinhvien'" routerLinkActive="is-active">
-        <span class="link-content">SINH VIÊN</span>
-      </a>
-      <a mat-list-item [routerLink]="'/ds-hocphan'" routerLinkActive="is-active">
-        <span class="link-content">HỌC PHẦN</span>
-      </a>
-      <a mat-list-item [routerLink]="'/ds-cathi'" routerLinkActive="is-active">
-        <span class="link-content">CA THI</span>
-      </a>
-      <a mat-list-item [routerLink]="'/ds-kithi'" routerLinkActive="is-active">
-        <span class="link-content">KÌ THI</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
+<mat-sidenav-container  *ngIf="authService.user$ | async as user">
+
+    <mat-sidenav #sideNav mode="side" [opened]="user.value !== null && user.value.role == 1" fixedInViewport>
+        <div class="top-logo">
+          <!-- <button mat-raised-button class=gradient>
+            <mat-icon>create_new_folder</mat-icon> TẠO CA THI
+          </button> -->
+        </div>
+        <mat-nav-list>
+          <a mat-list-item [routerLink]="'/'">
+            <mat-icon>near_me</mat-icon>
+            <span class="link-content">TRANG CHỦ</span>
+          </a>
+          <a mat-list-item [routerLink]="'/ds-sinhvien'" routerLinkActive="is-active">
+            <mat-icon>supervisor_account</mat-icon>
+            <span class="link-content">SINH VIÊN</span>
+          </a>
+          <a mat-list-item [routerLink]="'/ds-hocphan'" routerLinkActive="is-active">
+            <mat-icon>book</mat-icon>
+            <span class="link-content">HỌC PHẦN</span>
+          </a>
+          <a mat-list-item [routerLink]="'/ds-kithi'" routerLinkActive="is-active">
+            <mat-icon>offline_bolt</mat-icon>
+            <span class="link-content">KÌ THI</span>
+          </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
   <mat-sidenav-content>
     <div style="height:100vh">
       <app-header [inputSideNav]="sideNav"></app-header>

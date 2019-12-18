@@ -1,0 +1,3 @@
+<mat-nav-list>
+  <mat-list-item style="margin-bottom: 5px;" *ngFor="let i of data.data" [ngStyle]="{background: i.active? '#00d02d14': '#a9000014'}"  (click)="select($event, i.active)">{{i.name}}</mat-list-item>
+</mat-nav-list>

@@ -1,0 +1,47 @@
+<div *ngIf="students.length > 0" class="print" id="print-section">
+  <div fxLayout="row wrap">
+    <div fxFlex='30' class="left">
+      PHÒNG ĐÀO TẠO
+      <br>
+      <b><u>TRƯỜNG ĐẠI HỌC ABC</u></b>
+    </div>
+    <div fxFlex='20' ></div>
+    <div fxFlex='50' class="right">
+      CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+      <br>
+      <b><u>Độc lập - Tự do - Hạnh phúc</u></b>
+    </div>
+  </div>
+  <h4>DANH SÁCH SINH VIÊN ĐĂNG KÍ THI TẠI PHÒNG {{data.room.place}} <br>
+  {{data.sess.from}} - {{data.sess.date*1000 | date: 'dd/MM/y'}} - {{data.sess.duration}} phút
+  </h4>
+  <table>
+    <tr>
+      <th>STT</th>
+      <th>MSSV</th>
+      <th>Họ và</th>
+      <th>Tên</th>
+      <th>Ngày sinh</th>
+      <th>Giới tính</th>
+      <th>Quê Quán</th>
+    </tr>
+    <tr *ngFor="let std of students; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{std.mssv}}</td>
+      <td>{{std.ho}}</td>
+      <td>{{std.ten}}</td>
+      <td>{{std.birthday}}</td>
+      <td>{{std.gender}}</td>
+      <td>{{std.homeTown}}</td>
+    </tr>
+  </table>
+</div>
+<ngx-spinner bdOpacity=0.9 bdColor="#fff" size="medium" color="#4964ff" type="ball-scale-multiple" [fullScreen]="true">
+  <p style="color: white"> LOADING...</p>
+</ngx-spinner>
+<div class="add" *ngIf="students.length > 0">
+  <button mat-fab color="accent" printSectionId="print-section"
+  [useExistingCss]="true"
+  ngxPrint title="THÊM PHÒNG THI MỚI">
+    <i class="material-icons">print</i></button>
+</div>

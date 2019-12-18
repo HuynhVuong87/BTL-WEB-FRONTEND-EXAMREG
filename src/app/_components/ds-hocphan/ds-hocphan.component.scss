@@ -1,0 +1,44 @@
+mat-toolbar-row.mat-toolbar-row {
+  border: #e5e5e5 dashed 2px;
+  background-color: var(--primary-color);
+
+  button {
+    margin-left: 10px;
+  }
+}
+
+mat-form-field.mat-form-field {
+  font-size: 13px;
+  color: var(--blue-text-color);
+  margin-left: 50px;
+  /* font-weight: bold; */
+  font-family: 'Quicksand', sans-serif;
+}
+
+div.div-search {
+  margin-left: 122px;
+  margin-top: 3px;
+  width: 316px;
+
+  input {
+    color: #000;
+    font-weight: bold;
+  }
+}
+
+div.add {
+  position: fixed;
+  bottom:30px;
+  right: 30px;
+  z-index: 1000;
+}
+
+mat-select[ng-reflect-value="true"] span.mat-select-value-text span{
+  color: #108b00 !important
+}
+mat-select[ng-reflect-value="false"] span.mat-select-value-text span{
+  color: #880000 !important
+}
+.menu .mat-button-ripple.mat-ripple {
+  background: #2196f314 !important;
+}

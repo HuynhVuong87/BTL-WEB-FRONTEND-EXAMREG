@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{data.nameTask}}</h1>
+<div mat-dialog-content>
+  <button mat-raised-button (click)="openInput()">
+    <mat-icon>attach_file</mat-icon> CHỌN FILE
+  </button>
+  <span *ngIf="ourFile" style="margin-left: 10px;"><b>{{ourFile.name}}</b></span>
+  <input id="fileInput" hidden type="file" accept=".xlsx, .xls, .csv" (change)="fileChange($event.target.files)"/>
+  <p [innerHTML]="data.describe"></p>
+  <img width="100%" src="{{data.previewImage}}" alt="">
+</div>
+<div mat-dialog-actions  *ngIf="ourFile" >
+  <button mat-raised-button color="warn" (click)="onNoClick()">Hủy</button>
+  <button mat-raised-button [mat-dialog-close]="data" class="gradient" cdkFocusInitial>XÁC NHẬN</button>
+</div>

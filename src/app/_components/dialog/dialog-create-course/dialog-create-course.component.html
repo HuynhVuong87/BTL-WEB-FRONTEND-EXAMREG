@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{data.name}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <textarea matInput placeholder="Nhập tên môn học" [(ngModel)]="data.course_name" name="course_name" style='text-transform: uppercase;'
+      autofocus></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Nhập mã môn học (ví dụ: INT_3301_3)" [(ngModel)]="data.course_code" style='text-transform: uppercase;'
+      name="course_code">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Giáo viên dạy" [(ngModel)]="data.course_teacher" style='text-transform: capitalize;'
+      name="course_teacher">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Thuộc khóa học" [formControl]="courseOf" style='text-transform: uppercase;'
+      name="course_of" [matAutocomplete]="autoCourse">
+      <mat-autocomplete #autoCourse="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions|async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <span class="example-spacer"></span>
+  <button mat-raised-button (click)="create()" color="primary">TẠO</button>
+  <button mat-button color="warn" (click)="onNoClick()">HỦY</button>
+</div>

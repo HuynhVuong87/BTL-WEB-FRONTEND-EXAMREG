@@ -1,0 +1,27 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <textarea matInput placeholder="Nhập tên kì thi" [(ngModel)]="data.name" name="name"
+      style='text-transform: uppercase;' autofocus></textarea>
+  </mat-form-field>
+  <!-- <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Bắt đầu từ" [(ngModel)]="data.from">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> -->
+  <mat-form-field class="date" style="margin-right: 24px;">
+    <input matInput [matDatepicker]="picker1" placeholder="Bắt đầu từ" [(ngModel)]="data.from" (dateInput)="addFrom('input', $event)" (dateChange)="addFrom('change', $event)">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="date">
+    <input matInput [matDatepicker]="picker2" placeholder="Đến" [(ngModel)]="data.to" (dateInput)="addTo('input', $event)" (dateChange)="addTo('change', $event)">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <span class="example-spacer"></span>
+  <button mat-raised-button (click)="create()" color="primary">TẠO</button>
+  <button mat-button color="warn" (click)="onNoClick()">HỦY</button>
+</div>

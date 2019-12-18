@@ -1,0 +1,19 @@
+mat-toolbar-row.mat-toolbar-row {
+  border: #e5e5e5 dashed 2px;
+  background-color: var(--primary-color);
+
+  button {
+    margin-left: 10px;
+  }
+  b {
+    font-family: 'Dosis', sans-serif;
+  }
+}
+div.add {
+  position: fixed;
+  bottom:30px;
+  right: 30px;
+  z-index: 1000;
+}
+
+

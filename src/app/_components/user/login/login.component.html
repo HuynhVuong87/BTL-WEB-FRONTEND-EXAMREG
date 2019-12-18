@@ -1,20 +1,22 @@
-<div class="container-component" >
+<!-- <div class="container-component" > -->
     <div class="login-form" [@EnterLeave]="'flyIn'">
         <form (submit)="logIn(postForm)" ngNativeValidate #postForm="ngForm">
           <mat-card>
             <mat-form-field>
-              <input matInput placeholder="Nhập Username hoặc Email" name="username" ngModel required minlength="1" autofocus>
+              <input matInput placeholder="Tên Đăng Nhập" name="username" ngModel required minlength="1" autofocus [(ngModel)]="username">
             </mat-form-field>
             <br>
             <mat-form-field>
-              <input #pass matInput type="password" placeholder="Nhập mật khẩu" name="password" ngModel required minlength="1">
+              <input #pass matInput [type]="hide ? 'password' : 'text'" placeholder="Mật Khẩu" name="password" ngModel required minlength="1">
+              <mat-icon style="cursor: pointer;" matSuffix (mouseenter)="hide = !hide" (mouseleave)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </mat-form-field>
             <br>
+            <span class="reset-pass" (click)="resetPass()">QUÊN MẬT KHẨU</span>
+
             <span class="example-spacer"></span>
-            <button mat-raised-button color="primary" style="margin-left: 10px;" type="submit">ĐĂNG NHẬP</button>
-            <a [routerLink]="'/register'"  mat-raised-button color="warn" type="submit">ĐĂNG KÍ</a>
+            <button mat-raised-button color="primary" style="margin-top: 17px;" type="submit">ĐĂNG NHẬP</button>
           </mat-card>
         </form>
       </div>
-</div>
+<!-- </div> -->
 

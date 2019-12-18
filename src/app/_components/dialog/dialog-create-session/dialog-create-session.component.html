@@ -1,0 +1,33 @@
+<h4 mat-dialog-title>TẠO CA THI</h4>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <div fxLayout="row wrap">
+      <mat-form-field fxFlex="35">
+        <input matInput placeholder="Tên ca thi" [(ngModel)]="data.name" />
+      </mat-form-field>
+      <mat-form-field fxFlex="20">
+        <input matInput [matDatepicker]="picker1" placeholder="Ngày Thi" [(ngModel)]="data.date" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)" />
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex="15">
+          <input matInput [ngxTimepicker]="picker" placeholder="Thời gian bắt đầu" [(ngModel)]="data.from" [format]="24" readonly>
+          <ngx-material-timepicker #picker [theme]="darkTheme"></ngx-material-timepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex="15">
+          <input matInput type="number" placeholder="Thời lượng (Phút)" [(ngModel)]="data.duration" min="0" >
+      </mat-form-field>
+    </div>
+    <span class="example-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
+  [scrollbarV]="true" [scrollbarH]="true" [footerHeight]="50" [rowHeight]="50" [selected]="selected"
+  [selectionType]="'checkbox'" [selectAllRowsOnPage]="false" (select)="onSelect($event)"
+  [sorts]="[{ prop: 'course_code', dir: 'desc' }]">
+</ngx-datatable>
+<div mat-dialog-action>
+  <span class="example-spacer"></span>
+  <button mat-raised-button (click)="createSession()" color="primary">TẠO</button>
+  <button mat-button color="warn" (click)="onNoClick()">HỦY</button>
+</div>

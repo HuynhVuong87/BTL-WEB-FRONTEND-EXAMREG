@@ -1,0 +1,10 @@
+<div class="success">
+  <mat-chip-list>
+    <mat-chip style="background-color: #00d123a3;">Tạo thành công: {{data.result.successed.length}}/{{data.length}} tài khoản sinh viên</mat-chip>
+  </mat-chip-list>
+</div>
+<div class="error" *ngIf="data.result.errors.mssv">
+  <mat-chip-list>
+    <mat-chip style="background-color: #d100004d">Lỗi: {{data.result.errors.error}} ({{data.result.errors.mssv}}-{{data.result.errors.email}}</mat-chip>
+  </mat-chip-list>
+</div>

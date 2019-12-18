@@ -1,1 +1,114 @@
-<p>ds-hocphan works!</p>
+<div class="add">
+  <button
+    mat-fab
+    class="gradient"
+    (click)="createCourse()"
+    title="THÊM HỌC PHẦN"
+  >
+    <i class="material-icons">add</i>
+  </button>
+</div>
+
+<div class="container-component">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <div>
+        <mat-form-field>
+          <mat-label>LỌC THEO KHÓA HỌC</mat-label>
+          <mat-select
+            [formControl]="selectCourse"
+            multiple
+            (selectionChange)="selectedCourse()"
+          >
+            <mat-option *ngFor="let course of courses" [value]="course">
+              {{ course }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <input
+        type="text"
+        class="input-basic"
+        placeholder=" NHẬP ĐỂ TÌM THEO TÊN HỌC PHẦN, MÃ HỌC PHẦN, GIÁO VIÊN"
+        (input)="onSearchChange($event.target.value)"
+        autofocus
+      />
+      <span class="example-spacer"></span>
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="menu">
+        <button mat-menu-item
+        [disabled]="selected.length == 0"
+        matTooltip="ghép kì thi cho học phần được chọn "
+        matTooltipPosition="before"
+        (click)="setTermForCourses()">
+          <mat-icon>offline_bolt</mat-icon>
+          <span>Thuộc kì thi</span>
+        </button>
+      </mat-menu>
+      <!-- <div class='div-search'>
+        <mat-form-field>
+          <input matInput type="text" (input)="onSearchChange($event.target.value)" placeholder="TÌM KIẾM TÊN MÔN HỌC, MÃ MÔN HỌC, GIÁO VIÊN">
+        </mat-form-field>
+      </div> -->
+
+      <span class="example-spacer"></span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <ngx-datatable
+    class="material"
+    [rows]="rows"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [scrollbarV]="true"
+    [scrollbarH]="true"
+    [footerHeight]="50"
+    [rowHeight]="50"
+    [selected]="selected"
+    [selectionType]="'checkbox'"
+    [selectAllRowsOnPage]="false"
+    [displayCheck]="displayCheck"
+    (select)="onSelect($event)"
+    [sorts]="[{ prop: 'active', dir: 'desc' }]"
+  >
+  </ngx-datatable>
+  <ng-template #activeTemplate let-row="row" let-value="value" let-i="i">
+    <mat-select [value]="value">
+      <mat-option
+        [value]="true"
+        (click)="changeStatus(row.id, true)"
+      >
+        KÍCH HOẠT
+      </mat-option>
+      <mat-option
+        [value]="false"
+        (click)="changeStatus(row.id, false)"
+      >
+        HỦY MÔN
+      </mat-option>
+    </mat-select>
+    <!-- </mat-form-field> -->
+  </ng-template>
+  <ng-template #accessLink let-row="row" let-value="value" let-i="index">
+    <span title="click để xem chi tiết-{{ value }}" class="ng-star-inserted">
+      <a [routerLink]="'/ds-hocphan/' + row.id">&nbsp;{{ value }}</a></span
+    >
+  </ng-template>
+</div>
+<ngx-spinner
+  bdOpacity="0.9"
+  bdColor="rgba(255,255,255,0.66)"
+  size="medium"
+  color="#4964ff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="color: white">Loading...</p>
+</ngx-spinner>

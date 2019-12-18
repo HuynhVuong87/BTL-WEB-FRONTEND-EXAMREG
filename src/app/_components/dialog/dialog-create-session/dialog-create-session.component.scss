@@ -1,0 +1,93 @@
+.mat-dialog-content div.col1 , .mat-dialog-content div.col2 {
+  padding: 15px;
+  padding-left: unset;
+  font-family: 'Quicksand', sans-serif !important;
+}
+
+h4.mat-dialog-title {
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+}
+
+input.search-subject {
+  padding: 8px;
+  font-size: 16px;
+  border: unset;
+  font-family: "Quicksand", sans-serif;
+  border-radius: 3px;
+  width: 100%;
+  background: #0000;
+  text-transform: uppercase;
+}
+
+mat-toolbar {
+  background: #0000;
+  border-radius: 4px;
+  border: #8acaff3a solid;
+  box-shadow: unset;
+}
+
+mat-list-item.mat-list-item {
+  margin-bottom: 10px;
+  background: #239eff1c;
+  border-radius: 4px;
+  border: #4763ff1c solid 1px;
+  font-size: 14px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+
+  mat-icon.mat-icon {
+    color: #00000091;
+  }
+
+  mat-icon.mat-icon:hover {
+    color: #ae0000bf;
+  }
+}
+
+.edit-session {
+  padding: 10px !important;
+}
+mat-form-field.in-row {
+  width: 32% !important;
+
+}
+.col2 {
+  padding-right: 0 !important;
+  div.rightPan {
+    border: #007cdf dashed;
+    margin-top: 9px;
+    border-radius: 2px;
+    mat-form-field input {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 500;
+      color: #00233f;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}
+mat-form-field {
+  font-size: 15px;
+  margin: 15px 20px 0 0 ;
+}
+mat-form-field.search {
+  font-size: 15px;
+  margin: 15px 10px 0 0 ;
+}
+.ngx-datatable.material{
+  margin: 20px 0;
+  datatable-body.datatable-body {
+    height: 30em !important;
+  }
+}
+.timepicker {
+  width: 400px !important;;
+}
+.timepicker__header {
+  border-radius: 4px 4px 0 0;
+  background-color: #fff !important;
+  /* color: #fff !important; */
+}

@@ -1,5 +1,5 @@
 .login-form {
-  width: 30%;
+  width: 25%;
   margin: 150px auto;
 }
 
@@ -18,4 +18,10 @@ button {
 .container-component {
   background: url('../../../../assets/images/login.jpg');
   background-size: cover;
+}
+
+.reset-pass {
+  font-size: 12px;
+  cursor: pointer;
+  color: #0046da;
 }

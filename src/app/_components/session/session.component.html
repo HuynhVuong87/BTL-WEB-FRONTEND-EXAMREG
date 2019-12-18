@@ -1,0 +1,62 @@
+<div class="add">
+  <button mat-fab class='gradient' (click)="createRoom()" title="THÊM PHÒNG THI MỚI">
+    <i class="material-icons">add</i></button>
+</div>
+<div class="container-component">
+  <ngx-datatable #table class='material' [columnMode]="'flex'" [headerHeight]="50" [footerHeight]="50"
+    [rowHeight]="'auto'" [rows]='rows'>
+    <ngx-datatable-column [flexGrow]="0.2" [width]="75" [resizeable]="false" [sortable]="false" [draggable]="false"
+      [canAutoResize]="false">
+      <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+        <mat-icon matBadge="{{row.booked}}" title="Xem sinh viên đã đăng kí" style="margin-top: 15px;"
+          (click)="sinhvien(row)">supervised_user_circle</mat-icon>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column [flexGrow]="0.25">
+      <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+        <!-- Pencil icon -->
+        <mat-icon title="CHỈNH SỬA" style="margin-top: 15px;" *ngIf="!this.isEditable[rowIndex]"
+          (click)="editRow(rowIndex)">edit</mat-icon>
+
+        <!-- Save/Delete icons -->
+        <mat-icon *ngIf="this.isEditable[rowIndex]" title="Save" style="color: #0070c8" (click)="save(row, rowIndex);">
+          save</mat-icon>
+        <mat-icon *ngIf="this.isEditable[rowIndex]" title="Delete" style="color: #b60000b3;"
+          (click)="delete(row,rowIndex)">remove_circle</mat-icon>
+      </ng-template>
+    </ngx-datatable-column>
+    <!-- Other Columns -->
+    <ngx-datatable-column [flexGrow]="1.5" name="PHÒNG THI SỐ" prop="room_num">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        <mat-form-field>
+          <input #focus_input type="number" matInput value="room_num" [(ngModel)]="row.room_num"
+            [disabled]="!isEditable[rowIndex]" (keyup.enter)="save(row, rowIndex);">
+        </mat-form-field>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column [flexGrow]="1.5" name="ĐỊA ĐIỂM" prop="place">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        <mat-form-field>
+          <input matInput value="place" [(ngModel)]="row.place" [disabled]="!isEditable[rowIndex]"
+            style="text-transform: uppercase;" (keyup.enter)="save(row, rowIndex);">
+        </mat-form-field>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column [flexGrow]="1.5" name="SỐ LƯỢNG MÁY" prop="length">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        <mat-form-field>
+          <input type="number" matInput value="length" [(ngModel)]="row.length" [disabled]="!isEditable[rowIndex]"
+            (keyup.enter)="save(row, rowIndex);">
+        </mat-form-field>
+      </ng-template>
+    </ngx-datatable-column>
+
+  </ngx-datatable>
+</div>
+<ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.66)" size="medium" color="#4964ff" type="ball-scale-multiple"
+  [fullScreen]="true">
+  <p style="color: white"> LOADING...</p>
+</ngx-spinner>

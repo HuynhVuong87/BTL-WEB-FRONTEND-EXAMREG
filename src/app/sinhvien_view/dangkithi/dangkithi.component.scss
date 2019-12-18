@@ -1,0 +1,25 @@
+.noti {
+  width: 30%;
+  margin: 150px auto;
+  text-align: center;
+  height: 42vh;
+  font-family: 'Dosis', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+}
+mat-toolbar-row.mat-toolbar-row {
+  border: #e5e5e5 dashed 2px;
+  background-color: var(--primary-color);
+
+  button {
+    margin-left: 10px;
+  }
+  input {
+    width: 30%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: #2196f359 solid 2px;
+    background: #f4faff93;
+  }
+}

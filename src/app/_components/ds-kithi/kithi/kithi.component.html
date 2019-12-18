@@ -1,0 +1,74 @@
+<div class="add" *ngIf="courses.length > 0" >
+  <button mat-fab class="gradient" (click)="createSession()" matTooltip="Thêm ca thi cho kì thi này"
+    matTooltipPosition="before">
+    <i class="material-icons">add</i>
+  </button>
+</div>
+<div class="container-component">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span class="title" *ngIf="fromdate">{{termName}} &nbsp; <span class="date" style="background: #0082e92e" matTooltip="Thời gian bắt đầu mở đăng kí thi"
+        matTooltipPosition="below">
+        {{fromdate* 1000 | date:'dd/MM/yyyy'}}
+      </span> &nbsp; <mat-icon style="font-size: 16px;">arrow_forward</mat-icon>
+      <span class="date" style="background: #ff11002b" matTooltip="Thời gian kết thúc kì thi"
+        matTooltipPosition="below">
+        {{to * 1000 | date:'dd/MM/yyyy'}}
+      </span></span>
+      <span class="example-spacer"></span>
+      <mat-form-field *ngIf="courses.length > 0" class="select-course">
+        <mat-label>Học phần trong kì thi</mat-label>
+        <mat-select #selectCourse>
+          <mat-option *ngFor="let course of courses" [value]="course.course_code - course.course_name" (click)="selectedCourse(course.id)" >
+            {{course.course_code}} - {{course.course_name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="menu">
+        <button mat-menu-item
+        [disabled]="selected.length == 0"
+        matTooltip="Loại bỏ ca thi khỏi học phần hiện tại"
+        matTooltipPosition="before"
+        (click)="removeSessionOfCourse()">
+          <mat-icon>cancel</mat-icon>
+          <span>Xóa Ca Thi</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
+    [scrollbarV]="true" [scrollbarH]="true" [footerHeight]="50" [rowHeight]="50"
+    [sorts]="[{ prop: 'date', dir: 'asc' }]" 
+    [selected]="selected"
+    [selectionType]="'checkbox'"
+    [selectAllRowsOnPage]="false"
+    (select)="onSelect($event)">
+  </ngx-datatable>
+    <ng-template #accessLink let-row="row" let-value="value" let-i="index">
+      <span title="click để xem chi tiết-{{ value }}" class="ng-star-inserted">
+        <a [routerLink]="'/ds-kithi/cathi/' + row.id">&nbsp;{{ value }}</a></span
+      >
+    </ng-template>
+    <ng-template #date let-row="row" let-value="value" let-i="index">
+      {{value*1000 | date: 'dd/MM/yyyy'}}
+    </ng-template>
+    <ng-template #from let-row="row" let-value="value" let-i="index">
+      {{value}}
+    </ng-template>
+    <ng-template #dura let-row="row" let-value="value" let-i="index">
+        {{value}} phút
+      </ng-template>
+</div>
+
+
+<ngx-spinner bdOpacity="0.9" bdColor="rgba(255,255,255,0.66)" size="medium" color="#4964ff" type="ball-scale-multiple"
+  [fullScreen]="true">
+  <p style="color: white">LOADING...</p>
+</ngx-spinner>

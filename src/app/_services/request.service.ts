@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { map, catchError, tap, } from 'rxjs/operators';
+import { FirebaseAuthServices } from './firebase-auth.service';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class MakeRequest {
-
-  constructor(private http: HttpClient) {
+  token: string = '';
+  constructor(private http: HttpClient, private authService: FirebaseAuthServices) {
 
   }
 
@@ -15,16 +17,27 @@ export class MakeRequest {
     return body || {};
   }
 
-  GETmethod({ url, headers }: { url: string; headers: any; }): Observable<any> {
-    return this.http.get(url, { withCredentials: true }).pipe(
-      map(this.extractData))
-      ;
+  async GETmethod({ url }: { url: string }): Promise<Observable<any>> {
+    if (firebase.auth().currentUser !== null) {
+      await firebase.auth().currentUser.getIdToken().then(result => {
+        this.token = result;
+      });
+    }
+    return this.http.get(url, {
+      headers: new HttpHeaders({ authorization: 'Bearer ' + this.token.toString() })
+    }).pipe(
+      map(this.extractData));
   }
 
-  POSTmethod({ url, body }: { url: string; body: any; }): Observable<any> {
-    return this.http.post(url, body, {
-      withCredentials: true
-    }).pipe(
+  async POSTmethod({ url, body }: { url: string; body: any; }): Promise<Observable<any>> {
+    await firebase.auth().currentUser.getIdToken().then(result => {
+      this.token = result;
+    });
+    return this.http.post(url, body,
+      {
+        headers: new HttpHeaders({ authorization: 'Bearer ' + this.token.toString() })
+      }
+    ).pipe(
       map(this.extractData));
   }
 

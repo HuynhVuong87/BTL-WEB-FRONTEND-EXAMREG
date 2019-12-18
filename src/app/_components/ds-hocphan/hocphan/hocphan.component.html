@@ -1,0 +1,29 @@
+<div class="add">
+  <button mat-fab class='gradient' matTooltip="Thêm sinh viên đủ hoặc không đủ điều kiện" matTooltipPosition="before"
+    (click)="openBottomSheet()">
+    <i class="material-icons">add</i>
+  </button>
+</div>
+
+<div class="container-component">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <div *ngIf='dataCourse'>
+        <span class="title">
+            {{dataCourse.course_name}} ({{dataCourse.course_code}}) - {{dataCourse.course_teacher}}
+        </span>
+      </div>
+      <span class="example-spacer"></span>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
+    [scrollbarV]="true" [scrollbarH]="true" [footerHeight]="50" [rowHeight]="50"
+    [sorts]="[{ prop: 'active', dir: 'asc' }]">
+  </ngx-datatable>
+  <ng-template #active let-row="row" let-value="value" let-i="index" >
+    <span style="font-weight: bold;" [ngStyle]="{color: !value? '#f00': '#29a500'}" >{{value? 'CHO PHÉP': 'CẤM THI'}}</span>
+  </ng-template>
+</div>
+<ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.66)" size="medium" color="#4964ff" type="ball-scale-multiple"
+  [fullScreen]="true">

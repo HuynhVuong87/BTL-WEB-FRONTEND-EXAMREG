@@ -1,0 +1,18 @@
+
+<div mat-dialog-content>
+  <mat-form-field>
+    <input type="text" placeholder="Tìm kiếm kì thi cho những môn đã chọn..." matInput [formControl]="myControl"
+    [matAutocomplete]="auto" autofocus >
+  </mat-form-field>
+  <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name"
+        (onSelectionChange)="onEnter($event, option)">
+        {{ option.name }}
+      </mat-option>
+    </mat-autocomplete>
+</div>
+<div mat-dialog-actions>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>LƯU</button>
+  <button mat-button (click)="onNoClick()">Hủy</button>
+</div>

@@ -28,7 +28,7 @@ mat-sidenav a{
 
 .top-logo {
   display: block;
-  height: 8%;
+  height: 7.5%;
 }
 
 span.link-content {
@@ -49,4 +49,8 @@ span.link-content {
 }
 .mat-drawer-inner-container{
   overflow-x: hidden !important;
+}
+
+mat-nav-list a mat-icon {
+  margin: 10px !important;
 }

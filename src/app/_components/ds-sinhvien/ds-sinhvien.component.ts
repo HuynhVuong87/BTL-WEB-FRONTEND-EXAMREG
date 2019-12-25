@@ -93,9 +93,10 @@ export class DsSinhvienComponent implements OnInit {
     });
   }
 
+  //them sinh vien tu file excel
   importFromExcels() {
 
-    // {
+    // mo dialog de upload file excel
     const dialogRef = this.dialog.open(DialogImportExcelComponent, {
       width: '750px',
       data: {
@@ -107,6 +108,7 @@ export class DsSinhvienComponent implements OnInit {
       }
     });
 
+    // xu ly ket qua tu file excel
     dialogRef.afterClosed().subscribe(async result => {
       if (result && result.length > 0) {
         if (result.length < 200) {
@@ -119,10 +121,10 @@ export class DsSinhvienComponent implements OnInit {
           // tslint:disable-next-line: forin
           for (const el of result) {
 
-            if (this.helper.validateBirthday(getDataByOrder(el, 6))) {
-              alert('Sai định dạng ngày sinh (dd/mm/yyyy hoặc d/m/yyyy) của sinh viên: ' + getDataByOrder(el, 0));
-              break;
-            }
+            // if (this.helper.validateBirthday(getDataByOrder(el, 6))) {
+            //   alert('Sai định dạng ngày sinh (dd/mm/yyyy hoặc d/m/yyyy) của sinh viên: ' + getDataByOrder(el, 0));
+            //   break;
+            // }
             const dataStudent: StudentsImport = {
               username: getDataByOrder(el, 0) || '',
               password: getDataByOrder(el, 1) || '',
@@ -137,6 +139,7 @@ export class DsSinhvienComponent implements OnInit {
 
             this.dataImportStudent.push(dataStudent);
           }
+          //gui du lieu sang backend
           const url = this.helper.rootUrl + 'user/add-students';
           (await this.request.POSTmethod({
             url, body: {

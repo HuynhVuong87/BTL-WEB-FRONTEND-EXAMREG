@@ -48,6 +48,7 @@ export class HocphanComponent implements OnInit {
     this.getData();
   }
 
+  //lay du lieu cua 1 mon hoc
   async getData() {
     this.spinner.show();
     const url = this.helper.rootUrl + 'course/get-one-course/' + this.id;

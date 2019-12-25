@@ -93,9 +93,10 @@ export class DsSinhvienComponent implements OnInit {
     });
   }
 
+  // them sinh vien tu file excel
   importFromExcels() {
 
-    //
+    // mo dialog de upload file excel
     const dialogRef = this.dialog.open(DialogImportExcelComponent, {
       width: '750px',
       data: {
@@ -107,7 +108,7 @@ export class DsSinhvienComponent implements OnInit {
       }
     });
 
-
+    // xu ly ket qua tu file excel
     dialogRef.afterClosed().subscribe(async result => {
       if (result && result.length > 0) {
         if (result.length < 200) {
@@ -138,7 +139,7 @@ export class DsSinhvienComponent implements OnInit {
 
             this.dataImportStudent.push(dataStudent);
           }
-
+          // gui du lieu sang backend
           const url = this.helper.rootUrl + 'user/add-students';
           (await this.request.POSTmethod({
             url, body: {

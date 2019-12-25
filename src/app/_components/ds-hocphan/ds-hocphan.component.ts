@@ -76,7 +76,7 @@ export class DsHocphanComponent implements OnInit {
       {
         prop: 'course_code',
         name: 'MÃ HỌC PHẦN',
-        width: 35
+        width: 35,
       },
       {
         prop: 'course_teacher',
@@ -190,6 +190,8 @@ export class DsHocphanComponent implements OnInit {
         ? false
         : true;
   }
+
+  // lay ra danh sach hoc phan
   async getData() {
     this.courses = [];
     this.codes = [];
@@ -220,6 +222,7 @@ export class DsHocphanComponent implements OnInit {
     );
   }
 
+  // tao 1 hoc phan
   createCourse() {
     const dialogRef = this.dialog.open(DialogCreateCourseComponent, {
       width: '450px',
@@ -245,7 +248,8 @@ export class DsHocphanComponent implements OnInit {
             .join(' '),
           course_of: result.data.course_of.toUpperCase()
         };
-        console.log(body);
+
+        // gui du lieu sang backend de tao
         (await this.request.POSTmethod({ url, body })).subscribe(
           res => {
             this.helper.noty('success', 3000, 'TẠO THÀNH CÔNG KHÓA HỌC...');
@@ -259,6 +263,7 @@ export class DsHocphanComponent implements OnInit {
     });
   }
 
+  // thiet lap ky thi cho cac mon hoc
   selectedCourse() {
     if (this.selectCourse.value.length > 0) {
       const options = {

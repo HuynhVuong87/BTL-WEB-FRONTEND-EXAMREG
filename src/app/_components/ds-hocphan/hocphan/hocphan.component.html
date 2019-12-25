@@ -10,11 +10,10 @@
     <mat-toolbar-row>
       <div *ngIf='dataCourse'>
         <span class="title">
-            {{dataCourse.course_name}} ({{dataCourse.course_code}}) - {{dataCourse.course_teacher}}
+            {{dataCourse.course_name}} - {{dataCourse.course_code}} - {{dataCourse.course_teacher}}
         </span>
       </div>
       <span class="example-spacer"></span>
-
     </mat-toolbar-row>
   </mat-toolbar>
   <ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="50"

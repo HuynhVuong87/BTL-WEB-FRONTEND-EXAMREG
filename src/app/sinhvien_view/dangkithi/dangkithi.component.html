@@ -31,7 +31,7 @@
 <ngx-spinner bdOpacity=0.9 bdColor="rgba(255,255,255,0.66)" size="medium" color="#4964ff" type="ball-scale-multiple"
   [fullScreen]="true">
 </ngx-spinner>
-<div class="add">
-  <button mat-fab class='gradient' title="ĐÃ ĐĂNG KÍ" [matBadge]="selected.length" matBadgeColor="warn">
-    <i class="material-icons">done</i></button>
+<div class="add" *ngIf="count>0">
+  <button (click)="print()" mat-fab class='gradient' title="TẢI/IN PHIẾU DỰ THI" [matBadge]="count" matBadgeColor="warn">
+    <i class="material-icons">print</i></button>
 </div>

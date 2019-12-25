@@ -1,0 +1,62 @@
+<div class="print" id="print-section">
+  <div fxLayout="row wrap">
+    <div fxFlex='30' class="left">
+      PHÒNG ĐÀO TẠO
+      <br>
+      <b><u>TRƯỜNG ĐẠI HỌC ABC</u></b>
+    </div>
+    <div fxFlex='20'></div>
+    <div fxFlex='50' class="right">
+      CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+      <br>
+      <b><u>Độc lập - Tự do - Hạnh phúc</u></b>
+    </div>
+  </div>
+  <h4>PHIẾU BÁO DỰ THI
+  </h4>
+  <span>
+    <b>Họ Và Tên: </b> {{data.sinhvien.fullName}}
+  </span>, &nbsp;
+  <span>
+    <b>Mã số sinh viên: </b> {{data.sinhvien.mssv}}
+  </span>, &nbsp;
+  <span>
+    <b>Ngày sinh: </b> {{data.sinhvien.birthday}}
+  </span>, &nbsp;
+  <span>
+    <b>Nơi sinh: </b> {{data.sinhvien.homeTown}}
+  </span>
+  <br>
+  <table>
+    <tr>
+      <th>STT</th>
+      <th>Tên Học Phần</th>
+      <th>Mã Học Phần</th>
+      <th>SBD</th>
+      <th>Ca Thi</th>
+      <th>Ngày Thi</th>
+      <th>Giờ Thi</th>
+      <th>Địa Điểm</th>
+    </tr>
+    <tr *ngFor="let std of data.rooms; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{std.course.name}}</td>
+      <td>{{std.course.code}}</td>
+      <td>{{std.sbd}}</td>
+      <td>{{std.session.name}}</td>
+      <td>{{std.session.date*1000 | date: 'dd/MM/yyyy'}}</td>
+      <td>{{std.session.from}}</td>
+      <td>{{std.room.place}}</td>
+    </tr>
+  </table>
+</div>
+<ngx-spinner bdOpacity=0.9 bdColor="#fff" size="medium" color="#4964ff" type="ball-scale-multiple" [fullScreen]="true">
+  <p style="color: white"> LOADING...</p>
+</ngx-spinner>
+<div class="add">
+  <button mat-fab color="accent" printSectionId="print-section" [useExistingCss]="true" ngxPrint
+    title="THÊM PHÒNG THI MỚI">
+    <i class="material-icons">print</i></button>
+  <button (click)="downloadPDF()" mat-fab color="primary" title="THÊM PHÒNG THI MỚI">
+    <i class="material-icons">arrow_downward</i></button>
+</div>

@@ -70,13 +70,13 @@ export class DsHocphanComponent implements OnInit {
       },
       {
         prop: 'course_name',
-        name: 'TÊN HỌC PHẦN'
+        name: 'TÊN HỌC PHẦN',
+        cellTemplate: this.accessLink
       },
       {
         prop: 'course_code',
         name: 'MÃ HỌC PHẦN',
-        width: 35,
-        cellTemplate: this.accessLink
+        width: 35
       },
       {
         prop: 'course_teacher',
@@ -245,17 +245,14 @@ export class DsHocphanComponent implements OnInit {
             .join(' '),
           course_of: result.data.course_of.toUpperCase()
         };
-
+        console.log(body);
         (await this.request.POSTmethod({ url, body })).subscribe(
           res => {
             this.helper.noty('success', 3000, 'TẠO THÀNH CÔNG KHÓA HỌC...');
             this.getData();
           },
           err => {
-            this.helper.openSnackBar(
-              err.error ? err.error.message : 'CÓ LỖI...',
-              'OK'
-            );
+            this.helper.noty('error', 4000, err.error.message);
           }
         );
       }

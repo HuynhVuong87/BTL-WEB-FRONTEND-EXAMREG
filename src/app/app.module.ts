@@ -47,14 +47,13 @@ import { BottomSheetComponent } from './_components/bottom-sheet/bottom-sheet.co
 import { DialogCreateTermComponent } from './_components/dialog/dialog-create-term/dialog-create-term.component';
 import { KithiComponent } from './_components/ds-kithi/kithi/kithi.component';
 import { DialogCreateSessionComponent } from './_components/dialog/dialog-create-session/dialog-create-session.component';
-import { DsRoomComponent } from './_components/ds-room/ds-room.component';
 import { SessionComponent } from './_components/session/session.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { DangkithiComponent } from './sinhvien_view/dangkithi/dangkithi.component';
 import { AdminHomeComponent } from './_components/admin-home/admin-home.component';
-import { DialogResultDkthiComponent } from './_components/dialog/dialog-result-dkthi/dialog-result-dkthi.component';
 // tslint:disable-next-line: max-line-length
 import { DialogViewStudentsOfRoomComponent } from './_components/dialog/dialog-view-students-of-room/dialog-view-students-of-room.component';
+import { DialogPrintDangkithiComponent } from './_components/dialog/dialog-print-dangkithi/dialog-print-dangkithi.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -91,12 +90,11 @@ export function getAuthServiceConfigs() {
     KithiComponent,
     DialogCreateSessionComponent,
     DialogSearchTerm,
-    DsRoomComponent,
     SessionComponent,
     DangkithiComponent,
     AdminHomeComponent,
-    DialogResultDkthiComponent,
-    DialogViewStudentsOfRoomComponent
+    DialogViewStudentsOfRoomComponent,
+    DialogPrintDangkithiComponent
   ],
   imports: [
     NgxPrintModule,
@@ -124,7 +122,8 @@ export function getAuthServiceConfigs() {
     DialogCreateTermComponent,
     DialogCreateSessionComponent,
     DialogSearchTerm,
-    DialogViewStudentsOfRoomComponent
+    DialogViewStudentsOfRoomComponent,
+    DialogPrintDangkithiComponent
   ],
   providers: [MatBottomSheet, AngularFireAuthGuard, MakeRequest, helperService, CookieService, {
     provide: NOTYF, useFactory: notyfFactory

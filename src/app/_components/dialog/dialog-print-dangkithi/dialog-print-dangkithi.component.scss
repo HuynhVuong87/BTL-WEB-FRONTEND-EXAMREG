@@ -1,0 +1,38 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+th, h4 {
+  // font-family: 'Dosis';
+  text-align: center;
+}
+
+div.left,
+div.right {
+  font-size: 15px;
+  text-align: center;
+}
+
+table,
+td,
+th {
+  border: 1px solid black;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+div.print {
+  padding: 5px;
+  font-family: 'Roboto', sans-serif !important;
+  color: #000 !important;
+}
+
+span {
+  margin-bottom: 5px;
+}
+
+button {
+  margin-left: 10px;
+}
